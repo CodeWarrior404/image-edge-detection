@@ -11,6 +11,8 @@ export class AppComponent {
   @ViewChild('horizontalPassEdgeImageCanvas') horizontalPassEdgeImageCanvas;
   @ViewChild('verticalPassEdgeImageCanvas') verticalPassEdgeImageCanvas;
   @ViewChild('magnitudeImageCanvas') magnitudeImageCanvas;
+  canvasHeight = 300;
+  canvasWidth = 500;
   inputImageData: ImageData;
   greyscaleImageData: ImageData;
 
@@ -39,9 +41,18 @@ export class AppComponent {
     reader.onload = (event) => {
       const img = new Image();
       img.onload = () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
+        const canvasRatio = canvas.width / canvas.height;
+        const imageRatio = img.width / img.height;
+        let imageWidth: number, imageHeight: number;
+        if (imageRatio < canvasRatio) {
+          imageHeight = canvas.height;
+          imageWidth = imageHeight * imageRatio;
+        } else {
+          imageWidth = canvas.width;
+          imageHeight = imageWidth / imageRatio;
+        }
+        ctx.drawImage(img, 0, 0, img.width, img.height,
+          (canvas.width - imageWidth) / 2, (canvas.height - imageHeight) / 2, imageWidth, imageHeight);
         this.inputImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       };
       img.src = event.target['result'];
@@ -58,8 +69,6 @@ export class AppComponent {
       data[i + 2] = avg; // blue
     }
     const canvas = this.greyscaleImageCanvas.nativeElement;
-    canvas.width = imageData.width;
-    canvas.height = imageData.height;
     const ctx = canvas.getContext('2d');
     ctx.putImageData(imageData, 0, 0);
     this.greyscaleImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -96,8 +105,6 @@ export class AppComponent {
       }
     }
     const horizontalCanvas = this.horizontalPassEdgeImageCanvas.nativeElement;
-    horizontalCanvas.width = imageData.width;
-    horizontalCanvas.height = imageData.height;
     const horizontalCtx = horizontalCanvas.getContext('2d');
     horizontalCtx.putImageData(imageData, 0, 0);
 
@@ -117,8 +124,6 @@ export class AppComponent {
       }
     }
     const verticalCanvas = this.verticalPassEdgeImageCanvas.nativeElement;
-    verticalCanvas.width = imageData.width;
-    verticalCanvas.height = imageData.height;
     const verticalCtx = verticalCanvas.getContext('2d');
     verticalCtx.putImageData(imageData, 0, 0);
 
@@ -133,8 +138,6 @@ export class AppComponent {
       }
     }
     const magnitudeCanvas = this.magnitudeImageCanvas.nativeElement;
-    magnitudeCanvas.width = imageData.width;
-    magnitudeCanvas.height = imageData.height;
     const magnitudeCtx = magnitudeCanvas.getContext('2d');
     magnitudeCtx.putImageData(imageData, 0, 0);
   }

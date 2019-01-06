@@ -1,14 +1,14 @@
 <input #fileInput type="file" name="name" accept='.png'
        (change)="fileSelectionHandler($event)"/>
 
-<canvas #inputImageCanvas class="image-canvas"></canvas>
+<canvas #inputImageCanvas class="image-canvas" [height]="canvasHeight" [width]="canvasWidth"></canvas>
 
 <button type="button" *ngIf="inputImageData" (click)="convertToGrayScaleClickHandler()">Convert to Greyscale</button>
 
-<canvas #greyscaleImageCanvas class="image-canvas"></canvas>
+<canvas #greyscaleImageCanvas class="image-canvas" [height]="canvasHeight" [width]="canvasWidth"></canvas>
 
 <button type="button" *ngIf="greyscaleImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
 
-<canvas #horizontalPassEdgeImageCanvas class="image-canvas"></canvas>
-<canvas #verticalPassEdgeImageCanvas class="image-canvas"></canvas>
-<canvas #magnitudeImageCanvas class="image-canvas"></canvas>
+<canvas #horizontalPassEdgeImageCanvas class="image-canvas" [height]="canvasHeight" [width]="canvasWidth"></canvas>
+<canvas #verticalPassEdgeImageCanvas class="image-canvas" [height]="canvasHeight" [width]="canvasWidth"></canvas>
+<canvas #magnitudeImageCanvas class="image-canvas" [height]="canvasHeight" [width]="canvasWidth"></canvas>
