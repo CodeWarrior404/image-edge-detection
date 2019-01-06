@@ -85,8 +85,8 @@ export class AppComponent {
     const verticalPassImageData: ImageData = ImageService.applyFilterToImageData(imageData, verticalPassFilter);
     ImageService.paintImageDateOnCanvas(verticalPassImageData, this.verticalPassEdgeImageCanvas.nativeElement);
 
-    const multiplePassImageData: ImageData = ImageService.applyFiltersToImageData(imageData, horizontalPassFilter, verticalPassFilter);
-    ImageService.paintImageDateOnCanvas(multiplePassImageData, this.magnitudeImageCanvas.nativeElement);
+    const magnitudeImageData: ImageData = ImageService.applyFiltersToImageData(imageData, horizontalPassFilter, verticalPassFilter);
+    ImageService.paintImageDateOnCanvas(magnitudeImageData, this.magnitudeImageCanvas.nativeElement);
   }
 
 }
