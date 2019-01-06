@@ -7,7 +7,7 @@
 
 <canvas #greyscaleImageCanvas class="image-canvas"></canvas>
 
-<button type="button" *ngIf="greyscaleImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
+<button type="button" *ngIf="inputImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
 
 <canvas #horizontalPassEdgeImageCanvas class="image-canvas"></canvas>
 <canvas #verticalPassEdgeImageCanvas class="image-canvas"></canvas>
