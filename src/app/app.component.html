@@ -5,10 +5,10 @@
 
 <button type="button" *ngIf="inputImageData" (click)="convertToGrayScaleClickHandler()">Convert to Greyscale</button>
 
-<canvas #greyscaleImageCanvas class="image-canvas"></canvas>
+<canvas #greyscaleImageCanvas *ngIf="greyscaleImageData" class="image-canvas"></canvas>
 
-<button type="button" *ngIf="inputImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
+<button type="button" *ngIf="greyscaleImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
 
-<canvas #horizontalPassEdgeImageCanvas class="image-canvas"></canvas>
-<canvas #verticalPassEdgeImageCanvas class="image-canvas"></canvas>
-<canvas #magnitudeImageCanvas class="image-canvas"></canvas>
+<canvas #horizontalPassEdgeImageCanvas *ngIf="horizontalPassImageData" class="image-canvas"></canvas>
+<canvas #verticalPassEdgeImageCanvas *ngIf="verticalPassImageData" class="image-canvas"></canvas>
+<canvas #magnitudeImageCanvas *ngIf="magnitudeImageData" class="image-canvas"></canvas>

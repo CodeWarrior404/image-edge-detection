@@ -15,6 +15,10 @@ export class AppComponent {
   canvasMaxHeight = 300;
   canvasMaxWidth = 500;
   inputImageData: ImageData;
+  greyscaleImageData: ImageData;
+  horizontalPassImageData: ImageData;
+  verticalPassImageData: ImageData;
+  magnitudeImageData: ImageData;
 
   fileSelectionHandler(e): void {
     if (e.target.files && e.target.files.length > 0) {
@@ -29,8 +33,8 @@ export class AppComponent {
   }
 
   detectEdgesClickHandler(): void {
-    if (this.inputImageData) {
-      this.detectEdges(this.inputImageData);
+    if (this.greyscaleImageData) {
+      this.detectEdges(this.greyscaleImageData);
     }
   }
 
@@ -63,8 +67,10 @@ export class AppComponent {
   }
 
   private convertToGreyscale(imageData: ImageData): void {
-    const greyscaleImageData: ImageData = ImageService.convertToGreyscale(imageData);
-    ImageService.paintImageDateOnCanvas(greyscaleImageData, this.greyscaleImageCanvas.nativeElement);
+    this.greyscaleImageData = ImageService.convertToGreyscale(imageData);
+    setTimeout(() => {
+      ImageService.paintImageDateOnCanvas(this.greyscaleImageData, this.greyscaleImageCanvas.nativeElement);
+    });
   }
 
   private detectEdges(imageData: ImageData): void {
@@ -79,14 +85,20 @@ export class AppComponent {
       [1, 2, 1]
     ];
 
-    const horizontalPassImageData: ImageData = ImageService.applyFilterToImageData(imageData, horizontalPassFilter);
-    ImageService.paintImageDateOnCanvas(horizontalPassImageData, this.horizontalPassEdgeImageCanvas.nativeElement);
+    this.horizontalPassImageData = ImageService.applyFilterToImageData(imageData, horizontalPassFilter);
+    setTimeout(() => {
+      ImageService.paintImageDateOnCanvas(this.horizontalPassImageData, this.horizontalPassEdgeImageCanvas.nativeElement);
+    });
 
-    const verticalPassImageData: ImageData = ImageService.applyFilterToImageData(imageData, verticalPassFilter);
-    ImageService.paintImageDateOnCanvas(verticalPassImageData, this.verticalPassEdgeImageCanvas.nativeElement);
+    this.verticalPassImageData = ImageService.applyFilterToImageData(imageData, verticalPassFilter);
+    setTimeout(() => {
+      ImageService.paintImageDateOnCanvas(this.verticalPassImageData, this.verticalPassEdgeImageCanvas.nativeElement);
+    });
 
-    const magnitudeImageData: ImageData = ImageService.applyFiltersToImageData(imageData, horizontalPassFilter, verticalPassFilter);
-    ImageService.paintImageDateOnCanvas(magnitudeImageData, this.magnitudeImageCanvas.nativeElement);
+    this.magnitudeImageData = ImageService.applyFiltersToImageData(imageData, horizontalPassFilter, verticalPassFilter);
+    setTimeout(() => {
+      ImageService.paintImageDateOnCanvas(this.magnitudeImageData, this.magnitudeImageCanvas.nativeElement);
+    });
   }
 
 }
