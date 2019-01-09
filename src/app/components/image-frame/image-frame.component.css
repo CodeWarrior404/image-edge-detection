@@ -1,0 +1,9 @@
+.image-container {
+  display: inline-block;
+  padding: 4px;
+  border: 2px solid #8B008B;
+}
+
+.image-title {
+  color: orangered;
+}

@@ -1,14 +1,26 @@
 <input #fileInput type="file" name="name" accept='.png'
        (change)="fileSelectionHandler($event)"/>
 
-<canvas #inputImageCanvas class="image-canvas"></canvas>
+<app-image-frame *ngIf="selectedFile"
+                 class="image-canvas"
+                 title="Input Image">
+  <canvas #inputImageCanvas></canvas>
+</app-image-frame>
 
 <button type="button" *ngIf="inputImageData" (click)="convertToGrayScaleClickHandler()">Convert to Greyscale</button>
 
-<canvas #greyscaleImageCanvas *ngIf="greyscaleImageData" class="image-canvas"></canvas>
+<app-image-frame *ngIf="greyscaleImageData" class="image-canvas">
+  <canvas #greyscaleImageCanvas></canvas>
+</app-image-frame>
 
 <button type="button" *ngIf="greyscaleImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
 
-<canvas #horizontalPassEdgeImageCanvas *ngIf="horizontalPassImageData" class="image-canvas"></canvas>
-<canvas #verticalPassEdgeImageCanvas *ngIf="verticalPassImageData" class="image-canvas"></canvas>
-<canvas #magnitudeImageCanvas *ngIf="magnitudeImageData" class="image-canvas"></canvas>
+<app-image-frame *ngIf="horizontalPassImageData" class="image-canvas">
+  <canvas #horizontalPassEdgeImageCanvas></canvas>
+</app-image-frame>
+<app-image-frame *ngIf="verticalPassImageData" class="image-canvas">
+  <canvas #verticalPassEdgeImageCanvas></canvas>
+</app-image-frame>
+<app-image-frame *ngIf="magnitudeImageData"class="image-canvas">
+  <canvas #magnitudeImageCanvas></canvas>
+</app-image-frame>

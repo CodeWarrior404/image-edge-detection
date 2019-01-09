@@ -14,6 +14,7 @@ export class AppComponent {
   @ViewChild('magnitudeImageCanvas') magnitudeImageCanvas;
   canvasMaxHeight = 300;
   canvasMaxWidth = 500;
+  selectedFile: File;
   inputImageData: ImageData;
   greyscaleImageData: ImageData;
   horizontalPassImageData: ImageData;
@@ -22,7 +23,8 @@ export class AppComponent {
 
   fileSelectionHandler(e): void {
     if (e.target.files && e.target.files.length > 0) {
-      this.loadInputImageInCanvas(e.target.files[0]);
+      this.selectedFile = e.target.files[0];
+      setTimeout(() => this.loadInputImageInCanvas(this.selectedFile));
     }
   }
 
