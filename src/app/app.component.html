@@ -9,18 +9,26 @@
 
 <button type="button" *ngIf="inputImageData" (click)="convertToGrayScaleClickHandler()">Convert to Greyscale</button>
 
-<app-image-frame *ngIf="greyscaleImageData" class="image-canvas">
+<app-image-frame *ngIf="greyscaleImageData"
+                 class="image-canvas"
+                 title="Greyscale Image">
   <canvas #greyscaleImageCanvas></canvas>
 </app-image-frame>
 
 <button type="button" *ngIf="greyscaleImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
 
-<app-image-frame *ngIf="horizontalPassImageData" class="image-canvas">
+<app-image-frame *ngIf="horizontalPassImageData"
+                 class="image-canvas"
+                 title="Horizontal Pass">
   <canvas #horizontalPassEdgeImageCanvas></canvas>
 </app-image-frame>
-<app-image-frame *ngIf="verticalPassImageData" class="image-canvas">
+<app-image-frame *ngIf="verticalPassImageData"
+                 class="image-canvas"
+                 title="Vertical Pass">
   <canvas #verticalPassEdgeImageCanvas></canvas>
 </app-image-frame>
-<app-image-frame *ngIf="magnitudeImageData"class="image-canvas">
+<app-image-frame *ngIf="magnitudeImageData"
+                 class="image-canvas"
+                 title="Combined Horizontal & Vertical Passes">
   <canvas #magnitudeImageCanvas></canvas>
 </app-image-frame>
