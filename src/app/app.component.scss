@@ -1,12 +1,44 @@
-.image-canvas {
-  display: block;
-  margin-top: 10px;
+.page-container {
+  text-align: center;
+  padding-top: 20px;
+
+  .file-select-button {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  #file-select {
+    display: none;
+  }
+
+  .image-canvas {
+    display: block;
+    margin-top: 10px;
+  }
+
+  canvas {
+    display: inline-block;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+
+  .edge-images-row {
+    .image-canvas {
+      display: inline-block;
+      margin-top: 10px;
+
+      &:not(:first-child) {
+        margin-left: 10px;
+      }
+    }
+  }
 }
 
-canvas {
-  display: block;
-}
-
-button {
-  margin-top: 10px;
-}

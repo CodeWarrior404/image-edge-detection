@@ -1,34 +1,44 @@
-<input #fileInput type="file" name="name" accept='.png'
-       (change)="fileSelectionHandler($event)"/>
+<div class="page-container">
+  <label for="file-select" class="file-select-button">
+    <i class="fa fa-cloud-upload"></i>
+    {{selectedFile ? 'Replace File' : 'Select File'}}
+  </label>
+  <input id="file-select" type="file" name="name" accept='.png'
+         (change)="fileSelectionHandler($event)"/>
 
-<app-image-frame *ngIf="selectedFile"
-                 class="image-canvas"
-                 title="Input Image">
-  <canvas #inputImageCanvas></canvas>
-</app-image-frame>
+  <app-image-frame *ngIf="selectedFile"
+                   class="image-canvas"
+                   title="Input Image">
+    <canvas #inputImageCanvas></canvas>
+  </app-image-frame>
 
-<button type="button" *ngIf="inputImageData" (click)="convertToGrayScaleClickHandler()">Convert to Greyscale</button>
+  <button type="button" *ngIf="inputImageData" (click)="convertToGrayScaleClickHandler()">Convert to Greyscale</button>
 
-<app-image-frame *ngIf="greyscaleImageData"
-                 class="image-canvas"
-                 title="Greyscale Image">
-  <canvas #greyscaleImageCanvas></canvas>
-</app-image-frame>
+  <app-image-frame *ngIf="greyscaleImageData"
+                   class="image-canvas"
+                   title="Greyscale Image">
+    <canvas #greyscaleImageCanvas></canvas>
+  </app-image-frame>
 
-<button type="button" *ngIf="greyscaleImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
+  <button type="button" *ngIf="greyscaleImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
 
-<app-image-frame *ngIf="horizontalPassImageData"
-                 class="image-canvas"
-                 title="Horizontal Pass">
-  <canvas #horizontalPassEdgeImageCanvas></canvas>
-</app-image-frame>
-<app-image-frame *ngIf="verticalPassImageData"
-                 class="image-canvas"
-                 title="Vertical Pass">
-  <canvas #verticalPassEdgeImageCanvas></canvas>
-</app-image-frame>
-<app-image-frame *ngIf="magnitudeImageData"
-                 class="image-canvas"
-                 title="Combined Horizontal & Vertical Passes">
-  <canvas #magnitudeImageCanvas></canvas>
-</app-image-frame>
+  <div class="edge-images-row">
+    <app-image-frame *ngIf="horizontalPassImageData"
+                     class="image-canvas"
+                     title="Horizontal Pass">
+      <canvas #horizontalPassEdgeImageCanvas></canvas>
+    </app-image-frame>
+    <app-image-frame *ngIf="verticalPassImageData"
+                     class="image-canvas"
+                     title="Vertical Pass">
+      <canvas #verticalPassEdgeImageCanvas></canvas>
+    </app-image-frame>
+  </div>
+
+  <app-image-frame *ngIf="magnitudeImageData"
+                   class="image-canvas"
+                   title="Combined Horizontal & Vertical Passes">
+    <canvas #magnitudeImageCanvas></canvas>
+  </app-image-frame>
+
+</div>
