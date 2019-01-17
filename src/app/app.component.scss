@@ -17,22 +17,18 @@
     display: none;
   }
 
-  .image-canvas {
-    display: block;
-    margin-top: 10px;
-  }
+  .page-row {
+    margin-top: 20px;
 
-  canvas {
-    display: inline-block;
-  }
-
-  .edge-images-row {
-    .image-canvas {
+    .image-canvas-frame {
       display: inline-block;
-      margin-top: 10px;
 
       &:not(:first-child) {
         margin-left: 10px;
+      }
+
+      canvas {
+        display: inline-block;
       }
     }
   }

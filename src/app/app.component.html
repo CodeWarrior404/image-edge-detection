@@ -6,35 +6,41 @@
   <input id="file-select" type="file" name="name" accept='.png'
          (change)="fileSelectionHandler($event)"/>
 
-  <app-image-frame *ngIf="selectedFile"
-                   class="image-canvas"
-                   title="Input Image">
-    <canvas #inputImageCanvas></canvas>
-  </app-image-frame>
+  <div class="page-row">
+    <app-image-frame *ngIf="selectedFile"
+                     class="image-canvas-frame"
+                     title="Input Image">
+      <canvas #inputImageCanvas></canvas>
+    </app-image-frame>
+  </div>
 
-  <app-image-frame *ngIf="greyscaleImageData"
-                   class="image-canvas"
-                   title="Greyscale Image">
-    <canvas #greyscaleImageCanvas></canvas>
-  </app-image-frame>
+  <div class="page-row">
+    <app-image-frame *ngIf="greyscaleImageData"
+                     class="image-canvas-frame"
+                     title="Greyscale Image">
+      <canvas #greyscaleImageCanvas></canvas>
+    </app-image-frame>
+  </div>
 
-  <div class="edge-images-row">
+  <div class="page-row">
     <app-image-frame *ngIf="horizontalPassImageData"
-                     class="image-canvas"
+                     class="image-canvas-frame"
                      title="Horizontal Pass">
       <canvas #horizontalPassEdgeImageCanvas></canvas>
     </app-image-frame>
     <app-image-frame *ngIf="verticalPassImageData"
-                     class="image-canvas"
+                     class="image-canvas-frame"
                      title="Vertical Pass">
       <canvas #verticalPassEdgeImageCanvas></canvas>
     </app-image-frame>
   </div>
 
-  <app-image-frame *ngIf="magnitudeImageData"
-                   class="image-canvas"
-                   title="Combined Horizontal & Vertical Passes">
-    <canvas #magnitudeImageCanvas></canvas>
-  </app-image-frame>
+  <div class="page-row">
+    <app-image-frame *ngIf="magnitudeImageData"
+                     class="image-canvas-frame"
+                     title="Combined Horizontal & Vertical Passes">
+      <canvas #magnitudeImageCanvas></canvas>
+    </app-image-frame>
+  </div>
 
 </div>
