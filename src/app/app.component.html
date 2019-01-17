@@ -1,7 +1,7 @@
 <div class="page-container">
   <label for="file-select" class="file-select-button">
     <i class="fa fa-cloud-upload"></i>
-    {{selectedFile ? 'Replace File' : 'Select File'}}
+    {{selectedFile ? 'Replace Image' : 'Select Image'}}
   </label>
   <input id="file-select" type="file" name="name" accept='.png'
          (change)="fileSelectionHandler($event)"/>
