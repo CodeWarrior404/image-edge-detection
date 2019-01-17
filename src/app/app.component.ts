@@ -28,18 +28,6 @@ export class AppComponent {
     }
   }
 
-  convertToGrayScaleClickHandler(): void {
-    if (this.inputImageData) {
-      this.convertToGreyscale(this.inputImageData);
-    }
-  }
-
-  detectEdgesClickHandler(): void {
-    if (this.greyscaleImageData) {
-      this.detectEdges(this.greyscaleImageData);
-    }
-  }
-
   private loadInputImageInCanvas(file: File): void {
     const canvas = this.inputImageCanvas.nativeElement;
     const ctx = canvas.getContext('2d');
@@ -62,6 +50,7 @@ export class AppComponent {
         ctx.drawImage(img, 0, 0, img.width, img.height,
           0, 0, imageWidth, imageHeight);
         this.inputImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        this.convertToGreyscale(this.inputImageData);
       };
       img.src = event.target['result'];
     };
@@ -72,6 +61,7 @@ export class AppComponent {
     this.greyscaleImageData = ImageService.convertToGreyscale(imageData);
     setTimeout(() => {
       ImageService.paintImageDateOnCanvas(this.greyscaleImageData, this.greyscaleImageCanvas.nativeElement);
+      this.detectEdges(this.greyscaleImageData);
     });
   }
 

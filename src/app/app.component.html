@@ -12,15 +12,11 @@
     <canvas #inputImageCanvas></canvas>
   </app-image-frame>
 
-  <button type="button" *ngIf="inputImageData" (click)="convertToGrayScaleClickHandler()">Convert to Greyscale</button>
-
   <app-image-frame *ngIf="greyscaleImageData"
                    class="image-canvas"
                    title="Greyscale Image">
     <canvas #greyscaleImageCanvas></canvas>
   </app-image-frame>
-
-  <button type="button" *ngIf="greyscaleImageData" (click)="detectEdgesClickHandler()">Detect Edges</button>
 
   <div class="edge-images-row">
     <app-image-frame *ngIf="horizontalPassImageData"
