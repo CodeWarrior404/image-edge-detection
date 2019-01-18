@@ -40,12 +40,13 @@ export class ImageService {
     const filteredPixelMatrix = JSON.parse(JSON.stringify(pixelMatrix));
     for (let i = 1; i < (pixelMatrix.length - 1); i++) {
       for (let j = 1; j < (pixelMatrix[i].length - 1); j++) {
-        filteredPixelMatrix[i][j] = filter[0][0] * pixelMatrix[i - 1][j - 1]
-          + filter[1][0] * pixelMatrix[i][j - 1]
-          + filter[2][0] * pixelMatrix[i + 1][j - 1]
-          + filter[0][2] * pixelMatrix[i - 1][j + 1]
-          + filter[1][2] * pixelMatrix[i][j + 1]
-          + filter[2][2] * pixelMatrix[i + 1][j + 1];
+        filteredPixelMatrix[i][j] =
+          Math.abs(filter[0][0] * pixelMatrix[i - 1][j - 1]
+            + filter[1][0] * pixelMatrix[i][j - 1]
+            + filter[2][0] * pixelMatrix[i + 1][j - 1]
+            + filter[0][2] * pixelMatrix[i - 1][j + 1]
+            + filter[1][2] * pixelMatrix[i][j + 1]
+            + filter[2][2] * pixelMatrix[i + 1][j + 1]);
       }
     }
     ImageService.translate2DPixelMatrixToImageData(filteredPixelMatrix, imageDataClone);
